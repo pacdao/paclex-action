@@ -1,8 +1,8 @@
 # PACDAO / LEXARMY ACTION
 
-Fight to Save Web3
+## Fight to Save Web3
 
-### Deployed to: [0x0b28483c3139ea92ee3b3fed1e04e4270d88d586](https://etherscan.io/address/0x0b28483c3139ea92ee3b3fed1e04e4270d88d586)
+Deployed to: [0x0b28483c3139ea92ee3b3fed1e04e4270d88d586](https://etherscan.io/address/0x0b28483c3139ea92ee3b3fed1e04e4270d88d586)
 
 ---
 
