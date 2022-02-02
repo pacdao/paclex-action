@@ -41,6 +41,8 @@ def test_fallback_receivable(nft, alice, accounts):
 def test_fallback_funds_withdrawable(nft, beneficiary, bob, accounts):
     founder_init = nft.balance()
     accounts[0].transfer(nft, 10 ** 18)
+    nft.updateBeneficiary(accounts[9], {'from': beneficiary})
+    beneficiary = accounts[9]
     beneficiary_init = beneficiary.balance()
     nft.withdraw({"from": beneficiary})
     assert beneficiary.balance() - beneficiary_init == 10 ** 18 + founder_init
@@ -53,7 +55,7 @@ def test_set_token_uri(nft_minted, beneficiary):
 
 
 def test_non_admin_cannot_mint_for(nft, accounts):
-    with brownie.reverts("Only Admin"):
+    with brownie.reverts("dev: Only Admin"):
         nft.mintFor(accounts[1], {"from": accounts[2]})
     assert nft.balanceOf(accounts[1]) == 0
 
@@ -66,13 +68,13 @@ def test_admin_can_mint_for(nft, accounts, beneficiary):
 def test_non_admin_cannot_set_token_uri(nft_minted, bob):
     init_uri = nft_minted.tokenURI(1)
     string = "test"
-    with brownie.reverts("Only Admin"):
+    with brownie.reverts("dev: Only Admin"):
         nft_minted.setTokenUri(1, string, {"from": bob})
     assert nft_minted.tokenURI(1) == init_uri
 
 
 def test_non_admin_cannot_update_merkle_root(nft, bob):
-    with brownie.reverts("Only Admin"):
+    with brownie.reverts("dev: Only Admin"):
         nft.updateRoot(
             "0x0000000000000000000000000000000000000000000000000000000000000000",
             {"from": bob},

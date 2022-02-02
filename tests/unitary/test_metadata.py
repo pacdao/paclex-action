@@ -30,7 +30,7 @@ def test_token_default_uri(nft_minted, tokenURI):
 
 
 def test_nonadmin_cannot_update_contract_uri(nft, accounts):
-    with brownie.reverts("Only Admin"):
+    with brownie.reverts("dev: Only Admin"):
         nft.setContractURI("test", {"from": accounts[2]})
 
 

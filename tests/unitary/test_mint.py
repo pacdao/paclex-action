@@ -10,7 +10,7 @@ def test_merkle_mints(nft, bob, leaf, proof):
 
 def test_merkle_remint_fails(nft, bob, leaf, proof):
     nft.mint(leaf, proof, {"from": bob})
-    with brownie.reverts("Leaf already used"):
+    with brownie.reverts("dev: Leaf already used"):
         nft.mint(leaf, proof, {"from": bob})
 
 
@@ -57,11 +57,11 @@ def test_mint_gets_to_artist(nft, beneficiary, leaf, proof):
     assert nft.balanceOf(nft.artist()) == 1
 
 
-def test_sponsors_get_twelve(nft, beneficiary, leaf, proof):
+def test_sponsors_get_twelve(nft, beneficiary, leaf, proof, bob):
     assert nft.balanceOf(nft.pacdao()) == 0
     assert nft.balanceOf(nft.lexarmy()) == 0
     nft.updateMaxMintsPerLeaf(50, {"from": beneficiary})
     for i in range(50):
-        nft.mint(leaf, proof, {"from": beneficiary})
+        nft.mint(leaf, proof, {"from": bob})
     assert nft.balanceOf(nft.pacdao()) == 12
     assert nft.balanceOf(nft.lexarmy()) == 12

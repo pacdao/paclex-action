@@ -1,4 +1,6 @@
 def test_can_withdraw_as_alice(nft_funded, alice, bob, accounts, beneficiary):
+    nft_funded.updateBeneficiary(accounts[3], {'from': beneficiary})
+    beneficiary = accounts[3]
     nft_funded.withdraw({"from": alice})
     init_balance = beneficiary.balance()
     accounts[1].transfer(nft_funded, 10 ** 18)
@@ -8,6 +10,9 @@ def test_can_withdraw_as_alice(nft_funded, alice, bob, accounts, beneficiary):
 
 
 def test_can_withdraw_as_bob(nft_funded, alice, bob, accounts, beneficiary):
+    nft_funded.updateBeneficiary(accounts[3], {'from': beneficiary})
+    beneficiary = accounts[3]
+
     nft_funded.withdraw({"from": alice})
     init_balance = beneficiary.balance()
 
@@ -17,13 +22,19 @@ def test_can_withdraw_as_bob(nft_funded, alice, bob, accounts, beneficiary):
     assert final_balance - init_balance == 10 ** 18
 
 
-def test_bob_gets_nothing_on_withdraw(nft_funded, bob):
+def test_bob_gets_nothing_on_withdraw(nft_funded, bob, beneficiary, accounts):
+    nft_funded.updateBeneficiary(accounts[3], {'from': beneficiary})
+    beneficiary = accounts[3]
+
     bob_balance = bob.balance()
     nft_funded.withdraw({"from": bob})
     assert bob.balance() <= bob_balance
 
 
 def test_withdrawal_increases_balance(nft_funded, alice, accounts, beneficiary):
+    nft_funded.updateBeneficiary(accounts[3], {'from': beneficiary})
+    beneficiary = accounts[3]
+
     init_balance = beneficiary.balance()
     accounts[3].transfer(nft_funded, 10 ** 18)
     nft_funded.withdraw({"from": alice})
@@ -32,6 +43,9 @@ def test_withdrawal_increases_balance(nft_funded, alice, accounts, beneficiary):
 
 
 def test_can_receive_funds_through_fallback(nft, alice, bob, accounts, beneficiary):
+    nft.updateBeneficiary(accounts[3], {'from': beneficiary})
+    beneficiary = accounts[3]
+
     init_balance = beneficiary.balance()
     bob_balance = bob.balance()
     accounts[3].transfer(nft, 10 ** 18)

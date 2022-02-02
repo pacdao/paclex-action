@@ -20,8 +20,8 @@ contract PACLEXAction is ERC721Enumerable {
     uint256 maxMintsPerLeaf = 1;
 
     string public baseURI = "ipfs://";
-    string public defaultMetadata = "QmPthQZ6tiqaUoXGRPRpAvFQcg9ALPtJ8wesWccYrqKy16";
-    string private _contractURI = "QmSzCP9KJBSjvmqoPt7Fjm21bDsC6BVtyKeRCi5tRkLwgT";
+    string public defaultMetadata = "QmTYvCgKunY8W18kSpCK5eUpHSEzGCmzqQp185AU451ALV";
+    string private _contractURI = "Qma4VAp8giZ74Ny7jJVW1e5V8kmC5VVaSeF6cbXWFizxsr";
 
     bool isPublicMint = true;
 
@@ -30,7 +30,7 @@ contract PACLEXAction is ERC721Enumerable {
 /* CONSTRUCTOR */
     constructor () ERC721 ("PAC/LEX Action", "PACLEX-A1"){
        owner = msg.sender;
-       beneficiary = payable(0x172dbbDa74a14268F62c87b02fC3B4438E0E328d);
+       beneficiary = payable(0xf27AC88ac7e80487f21e5c2C847290b2AE5d7B8e);
        merkleRoot = 0xbec6093988d4c88c0ee9b16c888f45b54e42106c79b3244b0a5551c0d4191f26; 
     }
 
@@ -70,7 +70,7 @@ contract PACLEXAction is ERC721Enumerable {
     }
     
 
-/* PUBLIC WRITEABLE */
+/*f = PUBLIC WRITEABLE */
 
     /**
      * @dev Mint NFT if eligible.
@@ -79,10 +79,9 @@ contract PACLEXAction is ERC721Enumerable {
 
     function mint(bytes32 leaf, bytes32[] memory proof) public
 	{
-		// Verify
-		require(isPublicMint);
+		require(isPublicMint); // dev: Minting period over
 		require(verifyMerkle(leaf, proof)); // dev: Invalid Merkle Tree
-		require(leafMints[leaf] < maxMintsPerLeaf, "Leaf already used");
+		require(leafMints[leaf] < maxMintsPerLeaf); // dev: Leaf already used
 		leafMints[leaf] += 1;
 		_mint(msg.sender);
 		if(currentId < 3) {
@@ -112,13 +111,13 @@ contract PACLEXAction is ERC721Enumerable {
      */
     function mintFor(address _mintAddress) public payable
     {
-	    require(msg.sender == beneficiary, "Only Admin");
+	    require(msg.sender == beneficiary); // dev: Only Admin
 	    require(_mintAddress != address(0));
 	    _mint(_mintAddress);
     }
 
     function updateRoot(bytes32 newRoot) public {
-	require(msg.sender == beneficiary, "Only Admin");
+	require(msg.sender == beneficiary); // dev: Only Admin
 	merkleRoot = newRoot;
     }
 
@@ -128,22 +127,22 @@ contract PACLEXAction is ERC721Enumerable {
      */
     function updateBeneficiary(address payable newBeneficiary) public 
     {		
-	require(msg.sender == beneficiary, "Not owner");
+	require(msg.sender == beneficiary); // dev: Only Admin
 	beneficiary = newBeneficiary;
     }
 
     function transferOwner(address newOwner) public {
-	require(msg.sender == beneficiary || msg.sender == owner);
+	require(msg.sender == beneficiary || msg.sender == owner); // dev: Only Owner
 	owner = newOwner;
     }
 
     function updatePublicMint(bool isMint) public {
-	require(msg.sender == beneficiary, "Not owner");
+	require(msg.sender == beneficiary); // dev: Only Admin
 	isPublicMint = isMint;
     }
 
     function updateMaxMintsPerLeaf(uint256 newMax) public {
-	require(msg.sender == beneficiary, "Not owner");
+	require(msg.sender == beneficiary); // dev: Only Admin
 	maxMintsPerLeaf = newMax;
     }
 
@@ -153,7 +152,7 @@ contract PACLEXAction is ERC721Enumerable {
      */
     function setTokenUri(uint256 _tokenId, string memory _newUri) public 
     {
-	require(msg.sender == beneficiary, "Only Admin");
+	require(msg.sender == beneficiary); // dev: Only Admin
 	_setTokenURI(_tokenId, _newUri);
     }
 
@@ -172,7 +171,7 @@ contract PACLEXAction is ERC721Enumerable {
     *
     */
     function setContractURI(string memory _newData) public {
-	require(msg.sender == beneficiary, "Only Admin");
+	require(msg.sender == beneficiary); //dev: Only Admin
 	_contractURI = _newData;
     }	    
 

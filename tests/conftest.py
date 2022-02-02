@@ -77,9 +77,9 @@ def beneficiary(nft, accounts):
 
 @pytest.fixture(scope="module")
 def contractURI():
-    return "ipfs://QmSzCP9KJBSjvmqoPt7Fjm21bDsC6BVtyKeRCi5tRkLwgT"
+    return "ipfs://Qma4VAp8giZ74Ny7jJVW1e5V8kmC5VVaSeF6cbXWFizxsr"
 
 
 @pytest.fixture(scope="module")
 def tokenURI():
-    return "ipfs://QmPthQZ6tiqaUoXGRPRpAvFQcg9ALPtJ8wesWccYrqKy16"
+    return "ipfs://QmTYvCgKunY8W18kSpCK5eUpHSEzGCmzqQp185AU451ALV"
