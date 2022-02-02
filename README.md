@@ -8,7 +8,9 @@ Deployed to: [0xb1a1c1AC9e41298f2570BB8eE4c482E9E32A7f6E](https://etherscan.io/a
 
 [PAC DAO](https://pac.xyz/) and [LeXpunK](https://www.lexpunk.army/) have partnered to provide developers and DeFi enthusiasts with a template to comment on the SEC Proposed Amendments to Reg ATS.  Please visit the [dedicated landing page](https://pac.xyz/) for details on submitting your letter to save Web3!
 
-Users who submit a comment may mint this free commemorative NFT.  Like all NFTs, you should expect it is worth exactly its cost of mint (free).
+Users who submit a comment may mint this free commemorative NFT free (minus gas).  For minting instructions, send proof of your letter to the dedicated [LEX Telegram](https://t.me/+263sPxfDagkxNGM5) or [PAC Discord](https://discord.com/invite/Y95mnqewpb) channel.  The admins will provide you the instructions to mint.
+
+Like all NFTs, you should expect it is worth equal to or less than cost (zero).
 
 ![Action NFT](metadata/PACLexAction.jpeg)
 
