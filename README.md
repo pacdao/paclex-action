@@ -25,6 +25,10 @@ HMU:
 
 Uses the Merkle Tree based on [@miguelmota](https://lab.miguelmota.com/merkletreejs/example/) with parameters Keccak-256, hashLeaves, sortLeaves, sortPairs, fillDefaultHash
 
+Upon submitting a comment, users should provide proof in the PAC Discord or LEX Telegram, where an admin will provide them the leaf / proof combo to submit to the mint function.  There are 1000 combos that can be used exactly once, unless the contract beneficiary address increases this cap.
+
+Within the first mints, a copy of the NFT will be sent to the artist, and 12 copies to LEX and PAC.
+
 
 ## PAC DAO Links
 * [🌐  Web](https://pac.xyz/)
