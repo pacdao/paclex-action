@@ -2,7 +2,7 @@
 
 ## Fight to Save Web3
 
-Deployed to: [0x0b28483c3139ea92ee3b3fed1e04e4270d88d586](https://etherscan.io/address/0x0b28483c3139ea92ee3b3fed1e04e4270d88d586)
+Deployed to: [0xb1a1c1AC9e41298f2570BB8eE4c482E9E32A7f6E](https://etherscan.io/address/0xb1a1c1AC9e41298f2570BB8eE4c482E9E32A7f6E)
 
 ---
 
@@ -17,7 +17,7 @@ Artwork by
 *Dreamer, designer, builder* working to help build a better world for everyone. 
 HMU: 
  * [https://linktr.ee/alphazwest](https://linktr.ee/alphazwest)
- * [alphazwest.eth](alphazwest.eth)
+ * [alphazwest.eth](https://app.ens.domains/name/alphazwest.eth/details)
 
 
 ---
